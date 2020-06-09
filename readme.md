@@ -3,20 +3,20 @@
 * Create game play Area
 * populate game play with grid function
 * populate bombs
-* populate numbers 1-8 pseudo randomly throughout board
+* populate numbers around bombs
+* increment numbers 1-8 according to bomb position 
 * populate null spaces pseudo random
-* click listeners on divs or whatever is utilized
+* click listeners on (divs or whatever) is utilized
 * clear btn/start btn 
-* score counter
+* score counter increment
 * Check win 
     * all non bomb squares are cleared to null or number value on click
         * displayWin()
     * function will also need on click
          * blank div will display now w/ number/null
-            * check surrounding boxes for same number or null and display
-        * score increment for all boxes displayed
+            * check surrounding boxes for null and if null display
+        * score increment for n boxes displayed
             * score display
-    
 * Check loss
     * user clicks bomb box
         * display bomb

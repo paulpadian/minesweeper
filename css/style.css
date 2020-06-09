@@ -1,0 +1,22 @@
+body {
+    margin: 0px;
+    text-align: center;
+}
+.game-container{
+    margin: 0px auto;
+    width: 70vw;
+    height: 500px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.game-box{
+    width: 20vw;
+    height: 450px;
+    border: 1px solid black;
+}
+button {
+    padding: 15px;
+    margin: 20px;
+}
