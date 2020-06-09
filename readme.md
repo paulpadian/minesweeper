@@ -11,7 +11,7 @@
 * Check win 
     * all non bomb squares are cleared to null or number value on click
         * displayWin()
-    # function will also need on click
+    * function will also need on click
      * blank div will display now w/ number/null
         * check surrounding boxes for same number or null and display
      * score increment for all boxes displayed
