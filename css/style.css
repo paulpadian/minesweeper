@@ -12,11 +12,21 @@ body {
     align-items: center;
 }
 .game-box{
-    width: 20vw;
+    width: 200px;
     height: 450px;
     border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    align-content: center;
 }
 button {
-    padding: 15px;
+    padding: 20px;
     margin: 20px;
+}
+#gamePiece {
+    margin: 0px;
+    height: 20px;
+    width: 20px;
+    border: 1px solid black;
 }
