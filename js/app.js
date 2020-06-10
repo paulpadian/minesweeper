@@ -1,4 +1,3 @@
-console.log("hi")
 
 //global var
 //current click
@@ -6,22 +5,31 @@ console.log("hi")
 //EuWuents: 
 document.querySelectorAll('#gamePiece').forEach(element => {
     element.addEventListener('click', ()=> {
+        //go win
+        //go loss
         console.log(element.className)
     })
 }); 
 
+document.getElementById("start").addEventListener("click", ()=> {
+    //go game populate
+    console.log('hi')
 
-// let gameMatrix = [
-// [[],[],[],[],[],[],[],[],[]]
-// [[],[],[],[],[],[],[],[],[]]
-// [[],[],[],[],[],[],[],[],[]]
-// [[],[],[],[],[],[],[],[],[]]
-// [[],[],[],[],[],[],[],[],[]]
-// [[],[],[],[],[],[],[],[],[]]
-// [[],[],[],[],[],[],[],[],[]]
-// [[],[],[],[],[],[],[],[],[]]
-// [[],[],[],[],[],[],[],[],[]]
-// ];
+}
+)
+
+
+window.gameMatrix = [
+[[null],[null],[null],[null],[null],[null],[null],[null],[null]],
+[[null],[null],[null],[null],[null],[null],[null],[null],[null]],
+[[null],[null],[null],[null],[null],[null],[null],[null],[null]],
+[[null],[null],[null],[null],[null],[null],[null],[null],[null]],
+[[null],[null],[null],[null],[null],[null],[null],[null],[null]],
+[[null],[null],[null],[null],[null],[null],[null],[null],[null]],
+[[null],[null],[null],[null],[null],[null],[null],[null],[null]],
+[[null],[null],[null],[null],[null],[null],[null],[null],[null]],
+[[null],[null],[null],[null],[null],[null],[null],[null],[null]]
+];
 
 
 function renderGrid(){
