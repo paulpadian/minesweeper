@@ -19,6 +19,7 @@ document.getElementById("start").addEventListener("click", ()=> {
 const bombNum = {
     easy : 10,
     easyP : 9,
+    medium: 0 
 }
 
 let gameMatrix = [];
@@ -30,11 +31,12 @@ function renderGrid(){
         count++
     }
   console.log(gameMatrix)
-  populateBoard();
+  populateBoardBomb();
 }
 
+let bombLocations = []
 
-function populateBoard(){
+function populateBoardBomb(){
     let bombs = 0
     const rowLength = bombNum.easyP
     function random(rowLength){
@@ -45,22 +47,26 @@ function populateBoard(){
         let y = random(rowLength)
     
         if(gameMatrix[x][y] === undefined) {
+            bombs++
             gameMatrix[x][y] = "B"
-
+            bombLocations.push([x , y])
+            console.log(bombLocations)
         }
-        console.log(gameMatrix)
-    
+  
     }
-    
     while(bombs < 10){
         populateBombs();
-        bombs++
         console.log(gameMatrix)
-        console.log(bombs)
-     
+        
     }
     
+    populateNum();
 }
+
+function populateNum(){
+    console.log([bombLocations][0][2])
+}
+
 function clearBoard(){
 
 }
