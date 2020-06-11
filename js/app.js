@@ -1,7 +1,3 @@
-
-//global var
-//current click
-// event listeners 
 //EuWuents: 
 document.querySelectorAll('#gamePiece').forEach(element => {
     element.addEventListener('click', ()=> {
@@ -14,32 +10,56 @@ document.querySelectorAll('#gamePiece').forEach(element => {
 document.getElementById("start").addEventListener("click", ()=> {
     //go game populate
     console.log('hi')
+    renderGrid();
+
 
 }
 )
 
+const bombNum = {
+    easy : 10,
+    easyP : 9,
+}
 
-window.gameMatrix = [
-[[null],[null],[null],[null],[null],[null],[null],[null],[null]],
-[[null],[null],[null],[null],[null],[null],[null],[null],[null]],
-[[null],[null],[null],[null],[null],[null],[null],[null],[null]],
-[[null],[null],[null],[null],[null],[null],[null],[null],[null]],
-[[null],[null],[null],[null],[null],[null],[null],[null],[null]],
-[[null],[null],[null],[null],[null],[null],[null],[null],[null]],
-[[null],[null],[null],[null],[null],[null],[null],[null],[null]],
-[[null],[null],[null],[null],[null],[null],[null],[null],[null]],
-[[null],[null],[null],[null],[null],[null],[null],[null],[null]]
-];
-
+let gameMatrix = [];
 
 function renderGrid(){
-// dont use until dynamic
+    let count = 0;
+    while(count < 9){
+        gameMatrix.push(new Array(9))
+        count++
+    }
+  console.log(gameMatrix)
+  populateBoard();
 }
 
 
-function populateGrid(){
- let bombs = 10
- let random = Math.random();
+function populateBoard(){
+    let bombs = 0
+    const rowLength = bombNum.easyP
+    function random(rowLength){
+         return Math.floor(Math.random() * Math.floor(rowLength))
+    } 
+    function populateBombs(){
+        let x = random(rowLength)
+        let y = random(rowLength)
+    
+        if(gameMatrix[x][y] === undefined) {
+            gameMatrix[x][y] = "B"
+
+        }
+        console.log(gameMatrix)
+    
+    }
+    
+    while(bombs < 10){
+        populateBombs();
+        bombs++
+        console.log(gameMatrix)
+        console.log(bombs)
+     
+    }
+    
 }
 function clearBoard(){
 
