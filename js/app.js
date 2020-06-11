@@ -64,7 +64,17 @@ function populateBoardBomb(){
 }
 
 function populateNum(){
-    console.log([bombLocations][0][2])
+  bombLocations.forEach(element => {
+       if(gameMatrix[element[0]+1][element[1]+1] === undefined && element[1] < 8){
+        gameMatrix[element[0]+1][element[1]+1] = 1
+       } else if(gameMatrix[element[0]][element[1]+1] === undefined && element[1] < 8){
+            gameMatrix[element[0]][element[1]+1] = 1
+       }
+   })
+   
+    
+    
+    
 }
 
 function clearBoard(){
