@@ -12,7 +12,7 @@ body {
     align-items: center;
 }
 .game-box{
-    width: 200px;
+    width: 320px;
     height: 450px;
     border: 1px solid black;
     display: flex;
@@ -24,9 +24,11 @@ button {
     padding: 20px;
     margin: 20px;
 }
-#gamePiece {
+.gamePiece {
     margin: 0px;
-    height: 20px;
-    width: 20px;
+    height: 33px;
+    width: 33px;
     border: 1px solid black;
+    font-size: 25px;
+    text-align: center;
 }

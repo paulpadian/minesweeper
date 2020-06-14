@@ -1,10 +1,9 @@
 //EuWuents: 
-document.querySelectorAll('#gamePiece').forEach(element => {
+document.querySelectorAll('.gamePiece').forEach(element => {
     element.addEventListener('click', () => {
         //go win
         //go loss
-        position = element.className
-        checkWin(position)
+        checkWinLoss(element.id)
        
     })
 });
@@ -13,7 +12,8 @@ document.getElementById("start").addEventListener("click", () => {
     //go game populate - done
     //go start / reset switch
     // go timer
-    //go bomb number 
+    //go bomb number
+    //go change border on div elements in gameMatrix 
 
     renderGrid();
 
@@ -76,7 +76,6 @@ function populateBoardBomb() {
     
 }
 
-
 function populateNum(){  
     gameMatrix.forEach((element, row) => {
        let below = row-1
@@ -118,18 +117,28 @@ function populateNum(){
 
 boxesDisplayed = []
 
-function checkWin(e) {
-    let position = e
+function checkWinLoss(e) {
+    let position = JSON.parse(e)
     let row = position[0]
     let index = position[1]
-    console.log(position)
-    console.log(row, index)
+        if(gameMatrix[row][index] === "B"){
+            console.log("you lost");
+            //go show all bombs/message
+            //
+        }
+        if(gameMatrix[row][index] === 0) {
+            //go show blank square 
+            console.log("blank")
+        }
+        if(gameMatrix[row][index] !== 0 && typeof gameMatrix[row][index] === "number") {
+         
+            console.log("show the number")
+            console.log(`${gameMatrix[row][index]}`)
+            console.log(`[${position}]`)
+            document.getElementById(e).innerText = gameMatrix[row][index]
+            
+        }
    
-    
-    //if boxes left === bombs => displayWin message
-    //if boxes clicked === null => checkNull
-    //if boxes clicked === number => displayNumber
-    
 
 }
 //populate grid
