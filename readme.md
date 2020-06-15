@@ -1,3 +1,10 @@
+# Objective
+* Minesweeper
+    ** Click boxes to uncover their hidden values, show all the values except for mine locations and you win the game.  Don't click a bomb box or you'll loose the game. 
+
+# Wire Frame
+
+
 # MVP
 * Create HTML framework
 * Create game play Area in js
