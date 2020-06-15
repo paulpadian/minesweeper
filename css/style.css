@@ -31,4 +31,23 @@ button {
     border: 1px solid black;
     font-size: 25px;
     text-align: center;
+    visibility: hidden;
+}
+#reset{
+    visibility: hidden;
+}
+#timeBomb{
+    height: 50px;
+    width: 320px;
+    border: 1px solid black;
+    align-self: flex-start;
+    display: flex;
+}
+#timer{
+    flex-grow: 2;
+    border: 1px solid black;
+}
+#bombDisplay{
+    flex-grow: 2; 
+    border: 1px solid black;
 }
