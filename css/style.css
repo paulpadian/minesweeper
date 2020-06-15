@@ -1,18 +1,24 @@
 body {
     margin: 0px;
     text-align: center;
+    font-family: 'Press Start 2P', cursive;
+}
+h1{ 
+    padding-top: 30px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 40px;
 }
 .game-container{
     margin: 0px auto;
     width: 70vw;
-    height: 500px;
+    height: 401px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .game-box{
     width: 320px;
-    height: 450px;
+    height: 400px;
     
     display: flex;
     justify-content: center;
@@ -28,9 +34,10 @@ button {
     height: 33px;
     width: 33px;
     border: 1px solid black;
-    font-size: 25px;
+    font-size: 20px;
     text-align: center;
     visibility: hidden;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 #reset{
     visibility: hidden;
@@ -38,17 +45,19 @@ button {
 #timeBomb{
     height: 50px;
     width: 320px;
-    
+    background-color: black;
     align-self: flex-start;
     display: flex;
 }
 #timer{
     flex-grow: 2;
-   
+  
     padding: 10px;
     text-align: right;
     font-size: 15px;
     margin: 5px;
+    color: rgb(255, 29, 29);
+    background-color: black;
 }
 #lossDisplay {
     flex-grow: 2;
@@ -56,12 +65,16 @@ button {
     text-align: center;
     font-size: 15px;
     margin: 5px;
+    color: rgb(255, 29, 29);
+    background-color: black;
 }
 #bombDisplay{
     flex-grow: 2; 
-   
+    font-family: 'Press Start 2P', cursive;
     text-align: left;
     font-size: 15px;
     padding: 10px;
     margin: 5px;
+    color: rgb(255, 29, 29);
+    background-color: black;
 }

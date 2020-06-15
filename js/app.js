@@ -1,19 +1,11 @@
-//EuWuents: 
-document.querySelectorAll('.gamePiece').forEach(element => {
+ document.querySelectorAll('.gamePiece').forEach(element => {
     element.addEventListener('click', () => {
-        //go win
-        //go loss
         checkWinLoss(element.id)
         checkWin();
     })
 });
 
 document.getElementById("start").addEventListener("click", () => {
-    //go game populate - done
-    //go start / reset switch- done
-    // go timer 
-    //go bomb number
-    //go change border on div elements in gameMatrix 
     document.getElementById("start").style.visibility = "hidden";
     document.getElementById("reset").style.visibility = "visible";
     document.getElementById("bombDisplay").style.visibility = "visible"
@@ -311,7 +303,6 @@ function checkWinLoss(e) {
 
 }
 
-
 document.getElementById("reset").addEventListener("click", () =>{
     gameMatrix.forEach((element, row) => {
         element.forEach((square, index) => {
@@ -332,6 +323,7 @@ document.getElementById("reset").addEventListener("click", () =>{
     });
   
 } );
+
 var sec = 00;
 var min = 00;
 function timer(){
@@ -341,10 +333,10 @@ function timer(){
         if (sec === 60) {
             sec = 00;
             min++
-            
         }
     }, 1000);
 }
+
 function stopTimer(){
     document.getElementById("timer").style.visibility = "hidden";
     clearInterval(setInterval);
@@ -358,6 +350,7 @@ function checkWin(e) {
         if(!!element.innerText) {
             count++
         }    
+
     });
     if(count > gameMatrix.flat().length-bombNum.easy-1){
         document.getElementById("lossDisplay").innerText = "YOU WON!"
