@@ -286,7 +286,7 @@ function checkWinLoss(e) {
             }
         });
         gameZeros.forEach((zero, location) => {
-            if(zero[0] >= 0 && zero[0] < 9 && zero[1] >= 0 && zero[1] < 9){
+            if(zero[0] > -1 && zero[0] < 9 && zero[1] > -1 && zero[1] < 9){
                 checkZeroOne(zero)
                 checkZeroTwo(zero)
                 checkZeroThree(zero)
