@@ -2,6 +2,7 @@
     element.addEventListener('click', () => {
         checkWinLoss(element.id)
         checkWin();
+        changeColor();
     })
 });
 
@@ -57,7 +58,7 @@ function populateBoardBomb() {
 
         if (gameMatrix[x][y] === 0) {
             bombs++
-            gameMatrix[x][y] = "B"
+            gameMatrix[x][y] = "X"
             bombLocations.push([x, y])
 
         }
@@ -82,28 +83,28 @@ function populateNum() {
             let previous = [index - 1]
             let next = [index + 1]
 
-            if (typeof element[previous] === "number" && square === "B") {
+            if (typeof element[previous] === "number" && square === "X") {
                 element[previous] += 1
             }
-            if (typeof element[next] === "number" && square === "B") {
+            if (typeof element[next] === "number" && square === "X") {
                 element[next] += 1
             }
-            if (below >= 0 && typeof gameMatrix[below][index] === "number" && square === "B") {
+            if (below >= 0 && typeof gameMatrix[below][index] === "number" && square === "X") {
                 gameMatrix[below][index] += 1
             }
-            if (above <= bombNum.easyR - 1 && typeof gameMatrix[above][index] === "number" && square === "B") {
+            if (above <= bombNum.easyR - 1 && typeof gameMatrix[above][index] === "number" && square === "X") {
                 gameMatrix[above][index] += 1
             }
-            if (above <= bombNum.easyR - 1 && typeof gameMatrix[above][next] === "number" && square === "B") {
+            if (above <= bombNum.easyR - 1 && typeof gameMatrix[above][next] === "number" && square === "X") {
                 gameMatrix[above][next] += 1
             }
-            if (above <= bombNum.easyR - 1 && typeof gameMatrix[above][previous] === "number" && square === "B") {
+            if (above <= bombNum.easyR - 1 && typeof gameMatrix[above][previous] === "number" && square === "X") {
                 gameMatrix[above][previous] += 1
             }
-            if (below >= 0 && typeof gameMatrix[below][next] === "number" && square === "B") {
+            if (below >= 0 && typeof gameMatrix[below][next] === "number" && square === "X") {
                 gameMatrix[below][next] += 1
             }
-            if (below >= 0 && typeof gameMatrix[below][previous] === "number" && square === "B") {
+            if (below >= 0 && typeof gameMatrix[below][previous] === "number" && square === "X") {
                 gameMatrix[below][previous] += 1
             }
         });
@@ -119,18 +120,19 @@ function checkWinLoss(e) {
     let position = JSON.parse(e)
     let row = position[0]
     let index = position[1]
-    if (gameMatrix[row][index] === "B") {
+    if (gameMatrix[row][index] === "X") {
         document.getElementById("lossDisplay").innerText = "You Lost"
         bombLocations.forEach((bomb, index) => {
             let bombLocation = JSON.stringify(bomb)
-            document.getElementById(bombLocation).innerText = "B"
+            document.getElementById(bombLocation).innerText = "X"
             // SHOW LOSS
             
         })
         document.querySelectorAll(".gamePiece").forEach(element => { 
             element.style.pointerEvents = "none";
         });
-        return stopTimer();
+        stopTimer();
+        return
     
     }
     // if its a number other than zero
@@ -206,7 +208,7 @@ function checkWinLoss(e) {
     //horizontal R
     function checkZeroFive(position){
         
-        if(position[1] < 8 && gameMatrix[position[0]][position[1]] === 0){
+        if(position[1] <= 8 && gameMatrix[position[0]][position[1]] === 0){
           
             document.getElementById(`[${position}]`).innerText = gameMatrix[position[0]][position[1]]
             let newPosition1 = [position[0], position[1]+1]
@@ -339,9 +341,8 @@ function timer(){
 
 function stopTimer(){
     document.getElementById("timer").style.visibility = "hidden";
-    clearInterval(setInterval);
-    sec = 00
-    min = 00
+    sec = 00;
+    min = 00;
 }
 
 function checkWin(e) {
@@ -358,4 +359,41 @@ function checkWin(e) {
             element.style.pointerEvents = "none";
         });
     }
+}
+
+function changeColor(){
+    document.querySelectorAll(".gamePiece").forEach(element => {
+        console.log(element.innerText)
+        if(element.innerText === "0"){
+            element.style.color = "white"
+        }
+        if(element.innerText === "1"){
+            element.style.color = "blue"
+        }
+        if(element.innerText === "2"){
+            element.style.color = "Green"
+        }
+        if(element.innerText === "3"){
+            element.style.color = "red"
+        }
+        if(element.innerText === "4"){
+            element.style.color = "purple"
+        }
+        if(element.innerText === "5"){
+            element.style.color = "maroon"
+        }
+        if(element.innerText === "6"){
+            element.style.color = "turquoise"
+        }
+        if(element.innerText === "7"){
+            element.style.color = "black"
+        }
+        if(element.innerText === "8"){
+            element.style.color = "grey"
+        }
+        if(element.innerText === "X"){
+
+            element.style.color = "Black"
+        }   
+     });
 }
