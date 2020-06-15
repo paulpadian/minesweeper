@@ -4,7 +4,7 @@ document.querySelectorAll('.gamePiece').forEach(element => {
         //go win
         //go loss
         checkWinLoss(element.id)
-
+        checkWin();
     })
 });
 
@@ -47,10 +47,7 @@ function renderGrid() {
         gameMatrix.push(arr)
         count++;
     }
-
-    console.log(gameMatrix)
     populateBoardBomb();
-
 }
 
 let bombLocations = []
@@ -310,6 +307,8 @@ function checkWinLoss(e) {
         });
        
     }
+    checkWin();
+
 }
 
 
@@ -323,6 +322,7 @@ document.getElementById("reset").addEventListener("click", () =>{
     })
     gameMatrix = []
     bombLocations = []
+    document.getElementById("lossDisplay").innerText = ""
     document.getElementById("start").style.visibility = "visible";
     document.getElementById("reset").style.visibility = "hidden";
     stopTimer();
@@ -352,3 +352,17 @@ function stopTimer(){
     min = 00
 }
 
+function checkWin(e) {
+    let count = 0
+    document.querySelectorAll(".gamePiece").forEach(element => {
+        if(!!element.innerText) {
+            count++
+        }    
+    });
+    if(count > gameMatrix.flat().length-bombNum.easy-1){
+        document.getElementById("lossDisplay").innerText = "YOU WON!"
+        document.querySelectorAll(".gamePiece").forEach(element => {
+            element.style.pointerEvents = "none";
+        });
+    }
+}
