@@ -6,7 +6,7 @@ body {
 h1{ 
     padding-top: 30px;
     font-family: 'Press Start 2P', cursive;
-    font-size: 40px;
+    font-size: 30px;
 }
 .game-container{
     margin: 0px auto;
@@ -54,7 +54,7 @@ button {
   
     padding: 10px;
     text-align: right;
-    font-size: 15px;
+    font-size: 13px;
     margin: 5px;
     color: rgb(255, 29, 29);
     background-color: black;
@@ -63,7 +63,7 @@ button {
     flex-grow: 2;
     padding: 10px;
     text-align: center;
-    font-size: 15px;
+    font-size: 13px;
     margin: 5px;
     color: rgb(255, 29, 29);
     background-color: black;
@@ -72,7 +72,7 @@ button {
     flex-grow: 2; 
     font-family: 'Press Start 2P', cursive;
     text-align: left;
-    font-size: 15px;
+    font-size: 13px;
     padding: 10px;
     margin: 5px;
     color: rgb(255, 29, 29);

@@ -130,7 +130,7 @@ function checkWinLoss(e) {
         document.querySelectorAll(".gamePiece").forEach(element => { 
             element.style.pointerEvents = "none";
         });
-        stopTimer();
+        return stopTimer();
     
     }
     // if its a number other than zero
@@ -299,7 +299,7 @@ function checkWinLoss(e) {
         });
        
     }
-    checkWin();
+
 
 }
 
@@ -352,7 +352,7 @@ function checkWin(e) {
         }    
 
     });
-    if(count > gameMatrix.flat().length-bombNum.easy-1){
+    if(count === gameMatrix.flat().length-bombNum.easy){
         document.getElementById("lossDisplay").innerText = "YOU WON!"
         document.querySelectorAll(".gamePiece").forEach(element => {
             element.style.pointerEvents = "none";
