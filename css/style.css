@@ -14,7 +14,7 @@ body {
 .game-box{
     width: 320px;
     height: 450px;
-    border: 1px solid black;
+    
     display: flex;
     justify-content: center;
     flex-flow: row wrap;
@@ -39,15 +39,30 @@ button {
 #timeBomb{
     height: 50px;
     width: 320px;
-    border: 1px solid black;
+    
     align-self: flex-start;
     display: flex;
 }
 #timer{
     flex-grow: 2;
-    border: 1px solid black;
+   
+    padding: 10px;
+    text-align: right;
+    font-size: 15px;
+    margin: 5px;
+}
+#lossDisplay {
+    flex-grow: 2;
+    padding: 10px;
+    text-align: center;
+    font-size: 15px;
+    margin: 5px;
 }
 #bombDisplay{
     flex-grow: 2; 
-    border: 1px solid black;
+   
+    text-align: left;
+    font-size: 15px;
+    padding: 10px;
+    margin: 5px;
 }

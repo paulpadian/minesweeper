@@ -16,10 +16,14 @@ document.getElementById("start").addEventListener("click", () => {
     //go change border on div elements in gameMatrix 
     document.getElementById("start").style.visibility = "hidden";
     document.getElementById("reset").style.visibility = "visible";
+    document.getElementById("bombDisplay").style.visibility = "visible"
     document.querySelectorAll(".gamePiece").forEach(element => {
         element.style.visibility = "visible";
+        element.style.pointerEvents = "auto";
     });
+    document.getElementById("timer").style.visibility = "visible";
     renderGrid();
+    timer();
 
 }
 )
@@ -127,33 +131,34 @@ function checkWinLoss(e) {
     let row = position[0]
     let index = position[1]
     if (gameMatrix[row][index] === "B") {
-        console.log("you lost");
+        document.getElementById("lossDisplay").innerText = "You Lost"
         bombLocations.forEach((bomb, index) => {
             let bombLocation = JSON.stringify(bomb)
             document.getElementById(bombLocation).innerText = "B"
             // SHOW LOSS
+            
         })
+        document.querySelectorAll(".gamePiece").forEach(element => { 
+            element.style.pointerEvents = "none";
+        });
+        stopTimer();
+    
     }
     // if its a number other than zero
     if (gameMatrix[row][index] !== 0 && typeof gameMatrix[row][index] === "number") {
-
-        console.log("show the number")
-        console.log(`${gameMatrix[row][index]}`)
-        console.log(`[${position}]`)
         document.getElementById(e).innerText = gameMatrix[row][index]
 
     } // ...and then: 
 
     //no bomb and nothing around it
     let gameZeros = []
-    function checkZero(position) {
+    function checkZeroOne(position) {
     //diag right
-        if (position[0] < 8 && position[1] < 9 && gameMatrix[position[0]][position[1]] === 0) {
+        if (position[0] < 8 && position[1] < 8 && gameMatrix[position[0]][position[1]] === 0) {
             document.getElementById(`[${position}]`).innerText = gameMatrix[position[0]][position[1]]
             let newPosition1 = Array.from(position).map(el => el + 1)
-            
-            console.log(newPosition1)
-            return checkZero(newPosition1)
+            gameZeros.push(newPosition1)
+            return checkZeroOne(newPosition1)
         } else if(typeof gameMatrix[position[0]][position[1]] === "number"){
             document.getElementById(`[${position}]`).innerText = gameMatrix[position[0]][position[1]]
             return;
@@ -164,10 +169,10 @@ function checkWinLoss(e) {
     //diag left
     function checkZeroTwo(position){
      
-        if(position[0] > 0 && gameMatrix[position[0]][position[1]] === 0) {
+        if(position[0] > 0 && position[1] > 0 && gameMatrix[position[0]][position[1]] === 0) {
             document.getElementById(`[${position}]`).innerText = gameMatrix[position[0]][position[1]]
             let newPosition1 = Array.from(position).map(el => el -1)
-            
+            gameZeros.push(newPosition1)
             return checkZeroTwo(newPosition1);
         } else if(typeof gameMatrix[position[0]][position[1]] === "number"){
             document.getElementById(`[${position}]`).innerText = gameMatrix[position[0]][position[1]]
@@ -183,11 +188,8 @@ function checkWinLoss(e) {
             
             document.getElementById(`[${position}]`).innerText = gameMatrix[position[0]][position[1]]
             let newPosition1 = [position[0]-1, position[1]]
-            console.log(newPosition1)
             gameZeros.push(newPosition1)
             return checkZeroThree(newPosition1);
-
-            
         } else if(typeof gameMatrix[position[0]][position[1]] === "number"){
             document.getElementById(`[${position}]`).innerText = gameMatrix[position[0]][position[1]]
             return;
@@ -201,7 +203,6 @@ function checkWinLoss(e) {
         if(position[0] < 8 && gameMatrix[position[0]][position[1]] === 0) {
             document.getElementById(`[${position}]`).innerText = gameMatrix[position[0]][position[1]]
             let newPosition1 = [position[0]+1, position[1]]
-            console.log(newPosition1)
             gameZeros.push(newPosition1)
             return checkZeroFour(newPosition1);
 
@@ -216,8 +217,8 @@ function checkWinLoss(e) {
     //horizontal R
     function checkZeroFive(position){
         
-        if(position[0] < 8 && gameMatrix[position[0]][position[1]] === 0){
-            console.log("hi")
+        if(position[1] < 8 && gameMatrix[position[0]][position[1]] === 0){
+          
             document.getElementById(`[${position}]`).innerText = gameMatrix[position[0]][position[1]]
             let newPosition1 = [position[0], position[1]+1]
             gameZeros.push(newPosition1)
@@ -230,28 +231,91 @@ function checkWinLoss(e) {
             return;
         }
     }
-
-    console.log('here', position, gameMatrix[position[0]][position[1]])
+    function checkZeroSix(position){
+      
+        if(position[1] > 0 && gameMatrix[position[0]][position[1]] === 0){
+          
+            document.getElementById(`[${position}]`).innerText = gameMatrix[position[0]][position[1]]
+            let newPosition1 = [position[0], position[1]-1]
+            gameZeros.push(newPosition1)
+            return checkZeroSix(newPosition1);
+           
+        } else if(typeof gameMatrix[position[0]][position[1]] === "number"){
+            document.getElementById(`[${position}]`).innerText = gameMatrix[position[0]][position[1]]
+            return;
+        } else {
+            return;
+        }
+    }
+    function checkZeroSeven(position){
+        if(position[1] > 0 && position[0] < 8 && gameMatrix[position[0]][position[1]] === 0){
+            document.getElementById(`[${position}]`).innerText = gameMatrix[position[0]][position[1]]
+            let newPosition1 = [position[0]+1, position[1]-1]
+            gameZeros.push(newPosition1)
+            return checkZeroSix(newPosition1);
+           
+        } else if(typeof gameMatrix[position[0]][position[1]] === "number"){
+            document.getElementById(`[${position}]`).innerText = gameMatrix[position[0]][position[1]]
+            return;
+        } else {
+            return;
+        }
+    }
+    function checkZeroEight(position){
+        if(position[0] > 0 && position[1] < 8 && gameMatrix[position[0]][position[1]] === 0){
+            document.getElementById(`[${position}]`).innerText = gameMatrix[position[0]][position[1]]
+            let newPosition1 = [position[0]-1, position[1]+1]
+            gameZeros.push(newPosition1)
+            return checkZeroSix(newPosition1);
+           
+        } else if(typeof gameMatrix[position[0]][position[1]] === "number"){
+            document.getElementById(`[${position}]`).innerText = gameMatrix[position[0]][position[1]]
+            return;
+        } else {
+            return;
+        }
+    }
     if (gameMatrix[row][index] === 0) {
-        checkZero(position)
+        checkZeroOne(position)
         checkZeroTwo(position)
         checkZeroThree(position)
         checkZeroFour(position)
         checkZeroFive(position)
-        console.log(gameZeros)
+        checkZeroSix(position)
+        checkZeroSeven(position)
+        checkZeroEight(position)
+        gameZeros.forEach((zero, location) => {
+            if(zero[0] >= 0 && zero[0] < 9 && zero[1] >= 0 && zero[1] < 9){
+                checkZeroOne(zero)
+                checkZeroTwo(zero)
+                checkZeroThree(zero)
+                checkZeroFour(zero)
+                checkZeroFive(zero)
+                checkZeroSix(zero)
+                checkZeroSeven(zero)
+                checkZeroEight(zero)
+            }
+        });
+        gameZeros.forEach((zero, location) => {
+            if(zero[0] >= 0 && zero[0] < 9 && zero[1] >= 0 && zero[1] < 9){
+                checkZeroOne(zero)
+                checkZeroTwo(zero)
+                checkZeroThree(zero)
+                checkZeroFour(zero)
+                checkZeroFive(zero)
+                checkZeroSix(zero)
+                checkZeroSeven(zero)
+                checkZeroEight(zero)
+            }
+        });
+       
     }
 }
 
-//populate grid
-//assign event listeners to divs
-
-
 
 document.getElementById("reset").addEventListener("click", () =>{
-    console.log("hi")
     gameMatrix.forEach((element, row) => {
         element.forEach((square, index) => {
-            
             document.querySelectorAll(".gamePiece").forEach(element => {
                 element.innerText = "";
             });
@@ -261,22 +325,30 @@ document.getElementById("reset").addEventListener("click", () =>{
     bombLocations = []
     document.getElementById("start").style.visibility = "visible";
     document.getElementById("reset").style.visibility = "hidden";
-    console.log(gameMatrix)
-
-} )
-
+    stopTimer();
+    document.getElementById("bombDisplay").style.visibility = "hidden"
+    document.querySelectorAll(".gamePiece").forEach(element => {
+       element.style.visibility = "hidden";
+    });
+  
+} );
+var sec = 00;
+var min = 00;
 function timer(){
-    var sec = 00;
     var timer = setInterval(function(){
-        document.getElementById('timer').innerHTML='00:'+sec;
-        sec--;
-        if (sec < 0) {
-            clearInterval(timer);
+        document.getElementById('timer').innerText = `${min}: ${sec}`;
+        sec++;
+        if (sec === 60) {
+            sec = 00;
+            min++
+            
         }
     }, 1000);
 }
-
-function displayNumber() {
-
+function stopTimer(){
+    document.getElementById("timer").style.visibility = "hidden";
+    clearInterval(setInterval);
+    sec = 00
+    min = 00
 }
 
