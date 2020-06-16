@@ -201,7 +201,7 @@ function checkWinLoss(e) {
     //horizontal R
     function checkZeroFive(position){
         
-        if(position[1] <= 8 && gameMatrix[position[0]][position[1]] === 0){
+        if(position[1] < 8 && gameMatrix[position[0]][position[1]] === 0){
           
             document.getElementById(`[${position}]`).innerText = gameMatrix[position[0]][position[1]]
             let newPosition1 = [position[0], position[1]+1]
@@ -267,7 +267,7 @@ function checkWinLoss(e) {
         checkZeroEight(position)
         function gameCheck(){
         gameZeros.forEach((zero, location) => {
-            if(zero[0] >= 0 && zero[0] < 9 && zero[1] >= 0 && zero[1] < 9){
+            if(zero[0] >= 0 && zero[0] <= 9 && zero[1] >= 0 && zero[1] <= 9){
                 checkZeroOne(zero)
                 checkZeroTwo(zero)
                 checkZeroThree(zero)
@@ -281,6 +281,7 @@ function checkWinLoss(e) {
         }
         gameCheck();
         gameCheck();
+        
     
     }
 }
