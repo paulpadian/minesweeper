@@ -47,7 +47,8 @@ button {
 #timeBomb{
     height: 50px;
     width: 320px;
-    background-color: black;
+    background-color: rgb(0, 0, 0);
+    justify-content: space-evenly;
     align-self: flex-start;
     display: flex;
 }
@@ -58,7 +59,7 @@ button {
     font-size: 13px;
     margin: 5px;
     color: rgb(255, 29, 29);
-    background-color: black;
+    background-color: rgb(0, 0, 0);
 }
 #lossDisplay {
     flex-grow: 2;
@@ -67,7 +68,7 @@ button {
     font-size: 13px;
     margin: 5px;
     color: rgb(255, 29, 29);
-    background-color: black;
+    background-color: rgb(0, 0, 0);
 }
 #bombDisplay{
     flex-grow: 2; 
@@ -77,5 +78,5 @@ button {
     padding: 10px;
     margin: 5px;
     color: rgb(255, 29, 29);
-    background-color: black;
+    background-color: rgb(0, 0, 0);
 }
