@@ -265,6 +265,7 @@ function checkWinLoss(e) {
         checkZeroSix(position)
         checkZeroSeven(position)
         checkZeroEight(position)
+        function gameCheck(){
         gameZeros.forEach((zero, location) => {
             if(zero[0] >= 0 && zero[0] < 9 && zero[1] >= 0 && zero[1] < 9){
                 checkZeroOne(zero)
@@ -277,18 +278,10 @@ function checkWinLoss(e) {
                 checkZeroEight(zero)
             }
         });
-        gameZeros.forEach((zero, location) => {
-            if(zero[0] > -1 && zero[0] < 9 && zero[1] > -1 && zero[1] < 9){
-                checkZeroOne(zero)
-                checkZeroTwo(zero)
-                checkZeroThree(zero)
-                checkZeroFour(zero)
-                checkZeroFive(zero)
-                checkZeroSix(zero)
-                checkZeroSeven(zero)
-                checkZeroEight(zero)
-            }
-        });
+        }
+        gameCheck();
+        gameCheck();
+    
     }
 }
 
@@ -378,7 +371,6 @@ function changeColor(){
             element.style.color = "grey"
         }
         if(element.innerText === "X"){
-
             element.style.color = "Black"
         }   
      });

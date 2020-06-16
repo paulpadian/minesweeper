@@ -143,6 +143,18 @@ if (gameMatrix[row][index] === 0) {
     checkZeroFour(position)
 }
 }
+    // gameZeros.forEach((zero, location) => {
+        //     if(zero[0] > -1 && zero[0] < 9 && zero[1] > -1 && zero[1] < 9){
+        //         checkZeroOne(zero)
+        //         checkZeroTwo(zero)
+        //         checkZeroThree(zero)
+        //         checkZeroFour(zero)
+        //         checkZeroFive(zero)
+        //         checkZeroSix(zero)
+        //         checkZeroSeven(zero)
+        //         checkZeroEight(zero)
+        //     }
+        // });
 
 // source 
 // https://stackoverflow.com/questions/4235426/how-can-i-capture-the-right-click-event-in-javascript
