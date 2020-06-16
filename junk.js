@@ -143,3 +143,6 @@ if (gameMatrix[row][index] === 0) {
     checkZeroFour(position)
 }
 }
+
+// source 
+// https://stackoverflow.com/questions/4235426/how-can-i-capture-the-right-click-event-in-javascript

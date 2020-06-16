@@ -17,9 +17,7 @@ document.getElementById("start").addEventListener("click", () => {
     document.getElementById("timer").style.visibility = "visible";
     renderGrid();
     timer();
-
-}
-)
+})
 
 const bombNum = {
     easy: 10,
@@ -110,8 +108,6 @@ function populateNum() {
         });
 
     });
-
-    console.log(gameMatrix)
 }
 
 boxesDisplayed = []
@@ -176,7 +172,6 @@ function checkWinLoss(e) {
     function checkZeroThree(position){
     
         if(position[0] > 0 && gameMatrix[position[0]][position[1]] === 0) {
-            
             document.getElementById(`[${position}]`).innerText = gameMatrix[position[0]][position[1]]
             let newPosition1 = [position[0]-1, position[1]]
             gameZeros.push(newPosition1)
@@ -195,9 +190,7 @@ function checkWinLoss(e) {
             document.getElementById(`[${position}]`).innerText = gameMatrix[position[0]][position[1]]
             let newPosition1 = [position[0]+1, position[1]]
             gameZeros.push(newPosition1)
-            return checkZeroFour(newPosition1);
-
-            
+            return checkZeroFour(newPosition1);            
         } else if(typeof gameMatrix[position[0]][position[1]] === "number"){
             document.getElementById(`[${position}]`).innerText = gameMatrix[position[0]][position[1]]
             return;
@@ -225,12 +218,10 @@ function checkWinLoss(e) {
     function checkZeroSix(position){
       
         if(position[1] > 0 && gameMatrix[position[0]][position[1]] === 0){
-          
             document.getElementById(`[${position}]`).innerText = gameMatrix[position[0]][position[1]]
             let newPosition1 = [position[0], position[1]-1]
             gameZeros.push(newPosition1)
             return checkZeroSix(newPosition1);
-           
         } else if(typeof gameMatrix[position[0]][position[1]] === "number"){
             document.getElementById(`[${position}]`).innerText = gameMatrix[position[0]][position[1]]
             return;
@@ -244,7 +235,6 @@ function checkWinLoss(e) {
             let newPosition1 = [position[0]+1, position[1]-1]
             gameZeros.push(newPosition1)
             return checkZeroSix(newPosition1);
-           
         } else if(typeof gameMatrix[position[0]][position[1]] === "number"){
             document.getElementById(`[${position}]`).innerText = gameMatrix[position[0]][position[1]]
             return;
@@ -299,10 +289,7 @@ function checkWinLoss(e) {
                 checkZeroEight(zero)
             }
         });
-       
     }
-
-
 }
 
 document.getElementById("reset").addEventListener("click", () =>{
@@ -363,7 +350,6 @@ function checkWin(e) {
 
 function changeColor(){
     document.querySelectorAll(".gamePiece").forEach(element => {
-        console.log(element.innerText)
         if(element.innerText === "0"){
             element.style.color = "white"
         }
@@ -397,3 +383,11 @@ function changeColor(){
         }   
      });
 }
+
+document.querySelectorAll('.gamePiece').forEach(element => {
+    element.addEventListener('contextmenu', function(ev) {
+    ev.preventDefault();
+    element.innerText = "⛳"
+    return false;
+    }, false);
+});
